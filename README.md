@@ -5,6 +5,13 @@ Git repo for dotfiles in ~/.dotfiles instead of ~/.git
 
 See https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
 
+Summary to restore:
+
+1. Set up alias
+2. Add .dotfiles to ~/.gitignore
+3. git clone --bare <REPO> ~/.dotfiles
+4. dotfiles checkout (maybe backup some files first)
+
 
 Requirements
 ============
