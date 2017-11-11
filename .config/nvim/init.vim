@@ -1,49 +1,3 @@
-" Global {{{
-language en_US " Language is ENGLISH!
-set encoding=utf8
-set mouse=a " Mouse scrolling
-set exrc " Use local .vimrc
-set so=999 " Keep cursor centered vertically
-syntax enable
-set number
-
-set path=$PWD/**
-
-" Indentation
-set autoindent
-set smartindent
-filetype plugin indent on
-set cinoptions+=:0 " Indentation of switch-case
-
-" Tabs
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set smarttab
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.o,*.a,*.d " Ignores
-set wildmenu " Command completion
-set wildmode=longest,full
-
-let mapleader = ',' " Comma is leader
-
-" Remember cursor position between sessions
-autocmd BufReadPost *
-      \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-      \   exe "normal! g'\"" |
-      \ endif
-
-" Use ag over grep
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
-endif
-
-" Save undos
-set undodir=~/.config/nvim/undodir
-set undofile
-
-" }}}
 
 " Dein.vim {{{
 if &compatible
@@ -109,6 +63,54 @@ if dein#load_state('~/.dein')
     call dein#end()
     call dein#save_state()
 endif
+" }}}
+
+" Global {{{
+language en_US " Language is ENGLISH!
+set encoding=utf8
+set mouse=a " Mouse scrolling
+set exrc " Use local .vimrc
+set so=999 " Keep cursor centered vertically
+syntax enable
+set number
+
+set path=$PWD/**
+
+" Indentation
+set autoindent
+set smartindent
+set cinoptions+=:0 " Indentation of switch-case
+
+filetype plugin indent on
+
+" Tabs
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.o,*.a,*.d " Ignores
+set wildmenu " Command completion
+set wildmode=longest,full
+
+let mapleader = ',' " Comma is leader
+
+" Remember cursor position between sessions
+autocmd BufReadPost *
+      \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+      \   exe "normal! g'\"" |
+      \ endif
+
+" Use ag over grep
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+" Save undos
+set undodir=~/.config/nvim/undodir
+set undofile
+
 " }}}
 
 " Key Mappings - Needs to be cleaned up{{{
