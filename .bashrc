@@ -1,7 +1,4 @@
-#
-# dotfiles git repo in ~/.cfg
-# See https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
-#
+# dotfiles repo in ~/.dotfiles
 function dotfiles {
    git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }

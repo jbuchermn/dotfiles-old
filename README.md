@@ -1,4 +1,12 @@
-REQUIREMENTS
+About this setup
+================
+
+Git repo for dotfiles in ~/.dotfiles instead of ~/.git
+
+See https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+
+
+Requirements
 ============
 
     oh-my-git: https://github.com/arialdomartini/oh-my-git
