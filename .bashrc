@@ -20,10 +20,14 @@ export CXX=mpicxx
 export OMPI_CXX=g++-7
 
 PLOT(){
-    python ~/Desktop/Daten/masters_thesis/tRecX/tRecX/SCRIPTS/plot.py "$@"
+    python ~/Daten/masters_thesis/tRecX/tRecX/SCRIPTS/plot.py "$@"
 }
 COMPARE(){
-    python ~/Desktop/Daten/masters_thesis/tRecX/tRecX/SCRIPTS/compare.py "$@"
+    python ~/Daten/masters_thesis/tRecX/tRecX/SCRIPTS/compare.py "$@"
+}
+
+md () { 
+    mkdir -p "$@" && cd "$1"; 
 }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
