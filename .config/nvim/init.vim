@@ -190,7 +190,18 @@ let g:neomake_c_enabled_makers =  ['rtags']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_python_enabled_makers = ['flake8']
 
-" call neomake#configure#automake('rnw', 750)
+function! ConfigureNeomake()
+    if(&filetype == 'cpp' || &filetype == 'c')
+        call neomake#configure#automake('r', 750)
+    else
+        call neomake#configure#automake('rnw', 750)
+    endif
+endfunction
+
+augroup Neomake_Filetype
+    autocmd!
+    autocmd Filetype * :call ConfigureNeomake()
+augroup end
 " }}}
 
 " LaTeX {{{
