@@ -220,7 +220,7 @@ if has('conceal')
 endif
 " }}}
 
-" Vim-Projectionis {{{
+" Vim-Projectionist {{{
 let g:projectionist_heuristics = {
             \     "*": {
             \         "*.cpp": { "alternate": ["{}.h"] },
