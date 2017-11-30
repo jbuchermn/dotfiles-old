@@ -33,6 +33,7 @@ if dein#load_state('~/.dein')
     call dein#add('rking/ag.vim') 
     call dein#add('tomtom/tcomment_vim')
     call dein#add('jiangmiao/auto-pairs')
+    call dein#add('lambdalisue/lista.nvim')
 
     " Git
     call dein#add('tpope/vim-fugitive')
@@ -143,6 +144,10 @@ noremap  <silent> <leader>pv :AV<CR>
 
 " Neomake
 noremap           <leader>mm :Neomake<CR>
+
+" Lista
+nnoremap # :Lista<CR>
+nnoremap g# :ListaCursorWord<CR>
 
 " NERDTree
 let NERDTreeShowHidden=1
