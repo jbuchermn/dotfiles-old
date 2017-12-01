@@ -29,7 +29,7 @@ if dein#load_state('~/.dein')
     call dein#add('tpope/vim-eunuch')
     call dein#add('tpope/vim-projectionist')
     call dein#add('scrooloose/nerdtree') 
-    call dein#add('junegunn/fzf') " Install binary extra using Homebrew
+    call dein#add('wincent/command-t') " Needs compilation of c extension, see :help command-t
     call dein#add('rking/ag.vim') 
     call dein#add('tomtom/tcomment_vim')
     call dein#add('jiangmiao/auto-pairs')
@@ -159,7 +159,7 @@ vnoremap _ :NVimbolsToggle<CR>
 
 " FuzzyFinder
 let $FZF_DEFAULT_COMMAND = 'ag -g ""' " Use ag, which uses .gitignore
-map <C-p> :FZF<CR>
+map <C-p> :CommandT<CR>
 
 " Frequent Typos
 command! Q :q
