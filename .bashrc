@@ -31,4 +31,3 @@ md () {
     mkdir -p "$@" && cd "$1"; 
 }
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash

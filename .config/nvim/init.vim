@@ -25,15 +25,16 @@ if dein#load_state('~/.dein')
     " Symbols
     call dein#add('~/Daten/nvim/nvimbols')
 
-    " Util
+    " Navigation
     call dein#add('tpope/vim-eunuch')
     call dein#add('tpope/vim-projectionist')
     call dein#add('scrooloose/nerdtree') 
     call dein#add('wincent/command-t') " Needs compilation of c extension, see :help command-t
-    call dein#add('rking/ag.vim') 
+    call dein#add('lambdalisue/lista.nvim')
+
+    " Util
     call dein#add('tomtom/tcomment_vim')
     call dein#add('jiangmiao/auto-pairs')
-    call dein#add('lambdalisue/lista.nvim')
 
     " Git
     call dein#add('tpope/vim-fugitive')
@@ -149,6 +150,15 @@ noremap           <leader>mm :Neomake<CR>
 nnoremap # :Lista<CR>
 nnoremap g# :ListaCursorWord<CR>
 
+" Denite
+map <silent> <leader>gi :Denite grep:::!<CR>
+map <silent> <leader>gg :Denite grep<CR>
+
+" Command-T
+nnoremap <silent> <leader>tt :CommandT<CR>
+nnoremap <silent> <leader>tj :CommandTJump<CR>
+nnoremap <silent> <leader>tb :CommandTBuffer<CR>
+
 " NERDTree
 let NERDTreeShowHidden=1
 nnoremap - :NERDTreeToggle<CR>
@@ -203,6 +213,20 @@ augroup Neomake_Filetype
     autocmd!
     autocmd Filetype * :call ConfigureNeomake()
 augroup end
+" }}}
+
+" Denite {{{
+call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+
+" Configure grep source
+call denite#custom#var('grep', 'matchers', ['matcher_regexp'])
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
 " }}}
 
 " LaTeX {{{
