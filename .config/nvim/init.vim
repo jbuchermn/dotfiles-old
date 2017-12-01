@@ -157,10 +157,6 @@ vnoremap - :NERDTreeToggle<CR>
 nnoremap _ :NVimbolsToggle<CR>
 vnoremap _ :NVimbolsToggle<CR>
 
-" FuzzyFinder
-let $FZF_DEFAULT_COMMAND = 'ag -g ""' " Use ag, which uses .gitignore
-map <C-p> :CommandT<CR>
-
 " Frequent Typos
 command! Q :q
 command! WQ :wq
