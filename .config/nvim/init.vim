@@ -150,6 +150,11 @@ noremap           <leader>mm :Neomake<CR>
 nnoremap # :Lista<CR>
 nnoremap g# :ListaCursorWord<CR>
 
+let g:lista#custom_mappings = [ 
+    \   ['<C-k>', '<lista:select_previous_candidate>', 'noremap'], 
+    \   ['<C-j>', '<lista:select_next_candidate>', 'noremap']
+    \ ]
+
 " Denite
 map <silent> <leader>gi :Denite grep:::!<CR>
 map <silent> <leader>gg :Denite grep<CR>
