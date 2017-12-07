@@ -1,7 +1,7 @@
 
 " Dein.vim {{{
 if &compatible
-  set nocompatible
+    set nocompatible
 endif
 set runtimepath+=~/.dein/repos/github.com/Shougo/dein.vim
 
@@ -53,11 +53,6 @@ if dein#load_state('~/.dein')
     call dein#add('moll/vim-node')
     call dein#add('mxw/vim-jsx')
 
-    " LaTeX
-    call dein#add('vim-latex/vim-latex')
-
-
-
     if dein#check_install()
         call dein#install()
     endif
@@ -78,6 +73,9 @@ set number
 
 set path=$PWD/**
 
+" Screens are bigger nowadays...
+set textwidth=200
+
 " Indentation
 set autoindent
 set smartindent
@@ -96,17 +94,21 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.o,*.a,*.d " Ignores
 set wildmenu " Command completion
 set wildmode=longest,full
 
+" Splits
+set splitbelow
+set splitright
+
 let mapleader = ',' " Comma is leader
 
 " Remember cursor position between sessions
 autocmd BufReadPost *
-      \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-      \   exe "normal! g'\"" |
-      \ endif
+            \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+            \   exe "normal! g'\"" |
+            \ endif
 
 " Use ag over grep
 if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
+    set grepprg=ag\ --nogroup\ --nocolor
 endif
 
 " Save undos
@@ -151,13 +153,13 @@ nnoremap # :Lista<CR>
 nnoremap g# :ListaCursorWord<CR>
 
 let g:lista#custom_mappings = [ 
-    \   ['<C-k>', '<lista:select_previous_candidate>', 'noremap'], 
-    \   ['<C-j>', '<lista:select_next_candidate>', 'noremap']
-    \ ]
+            \   ['<C-k>', '<lista:select_previous_candidate>', 'noremap'], 
+            \   ['<C-j>', '<lista:select_next_candidate>', 'noremap']
+            \ ]
 
 " Denite
 map <silent> <leader>gi :Denite grep:::!<CR>
-map <silent> <leader>gg :Denite grep<CR>
+map <silent> <leader>gg :Denite -no-quit grep<CR>
 
 " Command-T
 nnoremap <silent> <leader>tt :CommandT<CR>
@@ -177,6 +179,13 @@ command! Q :q
 command! WQ :wq
 command! Wq :wq
 command! W :w
+
+" Window movement
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
+
 " }}}
 
 " VimScript {{{
@@ -201,7 +210,7 @@ set completeopt-=preview
 " }}}
 
 " Neomake {{{
-let g:neomake_cpp_enabled_makers =  ['rtags']
+let g:neomake_cpp_enabled_makers = ['rtags']
 let g:neomake_c_enabled_makers =  ['rtags']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_python_enabled_makers = ['flake8']
@@ -235,18 +244,16 @@ call denite#custom#var('grep', 'final_opts', [])
 " }}}
 
 " LaTeX {{{
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=nonstopmode $*'
-let g:Tex_ViewRule_pdf = 'open -a Skim'
-
-noremap <leader>lc :!pdflatex %:h/main.tex<CR>
-noremap <leader>lC :!pdflatex %:p<CR>
+nnoremap <leader>lc :!pdflatex %:h/main.tex<CR>
+nnoremap <leader>lC :!pdflatex %:p<CR>
+nnoremap <leader>lv :silent !open -a Skim %:h/main.pdf<CR>
+nnoremap <leader>lV :silent !open -a Skim %:r.pdf<CR>
 
 " Looks great, but extremely unpractical
 let g:tex_conceal = ""
 
 if has('conceal')
-  set conceallevel=2 concealcursor=niv
+    set conceallevel=2 concealcursor=niv
 endif
 " }}}
 
@@ -262,7 +269,7 @@ let g:projectionist_heuristics = {
 
 " Styling {{{
 if (has("termguicolors"))
-	set termguicolors
+    set termguicolors
 endif
 
 colorscheme OceanicNext
@@ -279,5 +286,59 @@ let g:neomake_error_sign = {'text': '•', 'texthl': 'NeomakeErrorMsg'}
 let g:neomake_warning_sign = {'text': '•', 'texthl': 'NeomakeWarningMsg'}
 
 hi CursorLineNR guifg=#ffffff
+
+" Focus by Wincent
+let g:WincentFocusBlacklist = ['diff', 'undotree', 'nerdtree', 'qf']
+function! WincentFocusEnabled()
+    return index(g:WincentFocusBlacklist, &filetype) == -1
+endfunction
+
+function! BlurWindow() abort
+    if WincentFocusEnabled()
+        if !exists('w:wincent_matches')
+            " Instead of unconditionally resetting, append to existing array.
+            " This allows us to gracefully handle duplicate autocmds.
+            let w:wincent_matches=[]
+        endif
+        let l:height=&lines
+        let l:slop=l:height / 2
+        let l:start=max([1, line('w0') - l:slop])
+        let l:end=min([line('$'), line('w$') + l:slop])
+        while l:start <= l:end
+            let l:next=l:start + 8
+            let l:id=matchaddpos(
+                        \   'SignColumn',
+                        \   range(l:start, min([l:end, l:next])),
+                        \   1000
+                        \ )
+            call add(w:wincent_matches, l:id)
+            let l:start=l:next
+        endwhile
+    endif
+endfunction
+
+function! FocusWindow() abort
+    if WincentFocusEnabled()
+        if exists('w:wincent_matches')
+            for l:match in w:wincent_matches
+                try
+                    call matchdelete(l:match)
+                catch /.*/
+                    " In testing, not getting any error here, but being ultra-cautious.
+                endtry
+            endfor
+            let w:wincent_matches=[]
+        endif
+    endif
+endfunction
+
+" if exists('+colorcolumn')
+"     autocmd BufEnter,FocusGained,VimEnter,WinEnter * if WincentFocusEnabled() | let &l:colorcolumn='+' . join(range(0, 254), ',+') | endif
+"     autocmd FocusLost,WinLeave * if WincentFocusEnabled() | let &l:colorcolumn=join(range(1, 255), ',') | endif
+" endif
+if exists('*matchaddpos')
+    autocmd BufEnter,FocusGained,VimEnter,WinEnter * call FocusWindow()
+    autocmd FocusLost,WinLeave * call BlurWindow()
+endif
 " }}}
 
