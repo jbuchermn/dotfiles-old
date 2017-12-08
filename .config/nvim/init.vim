@@ -12,6 +12,8 @@ if dein#load_state('~/.dein')
 
     " Denite
     call dein#add('Shougo/denite.nvim')
+
+    " TODO Does not work
     call dein#add('mhartington/denite-neomake')
 
     " Neomake
@@ -126,13 +128,17 @@ nmap <silent> <ESC> :noh<CR>
 nnoremap * *`` 
 
 " Map arrow keys
-nmap <Up> <Nop>
+nmap <silent> <Up> :lprevious<CR>
+nmap <silent> <Down> :lnext<CR>
+nmap <silent> <S-Up> :cprevious<CR>
+nmap <silent> <S-Down> :cnext<CR>
+
 vmap <Up> <Nop>
-nmap <Down> <Nop>
 vmap <Down> <Nop>
+
 nmap <Left> <<
-vmap <Left> <gv
 nmap <Right> >>
+vmap <Left> <gv
 vmap <Right> >gv
 
 " Toggle comments
@@ -144,9 +150,13 @@ vnoremap <silent> <leader>ci :TCommentInline<CR>
 " Vim-Projectionist
 noremap  <silent> <leader>ph :A<CR>
 noremap  <silent> <leader>pv :AV<CR>
+noremap  <silent> <leader>ps :AS<CR>
 
-" Neomake
-noremap           <leader>mm :Neomake<CR>
+" Neomake/Location list
+noremap <leader>mm :Neomake<CR>
+noremap <leader>md :Denite -no-quit neomake<CR>
+noremap <leader>mo :lopen<CR>
+noremap <leader>mc :lclose<CR>
 
 " Lista
 nnoremap # :Lista<CR>
@@ -158,7 +168,7 @@ let g:lista#custom_mappings = [
             \ ]
 
 " Denite
-map <silent> <leader>gi :Denite grep:::!<CR>
+map <silent> <leader>gi :Denite -no-quit grep:::!<CR>
 map <silent> <leader>gg :Denite -no-quit grep<CR>
 
 " Command-T
@@ -204,9 +214,17 @@ let g:nvimbols_enabled = 1
 " }}}
 
 "  Deoplete {{{
+
+" General
 let g:deoplete#enable_at_startup = 1
-let g:tern_request_timeout = 1
 set completeopt-=preview
+
+" Display more than mere fractions
+let g:deoplete#max_abbr_width = 0
+let g:deoplete#max_menu_width = 0
+
+" Turn on TernJS
+let g:tern_request_timeout = 1
 " }}}
 
 " Neomake {{{
@@ -288,7 +306,7 @@ let g:neomake_warning_sign = {'text': '•', 'texthl': 'NeomakeWarningMsg'}
 hi CursorLineNR guifg=#ffffff
 
 " Focus by Wincent
-let g:WincentFocusBlacklist = ['diff', 'undotree', 'nerdtree', 'qf']
+let g:WincentFocusBlacklist = ['diff', 'undotree', 'nerdtree', 'qf', 'nvimbols']
 function! WincentFocusEnabled()
     return index(g:WincentFocusBlacklist, &filetype) == -1
 endfunction
