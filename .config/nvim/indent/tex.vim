@@ -1,3 +1,4 @@
+" Source: github.com/vim-latex/vim-latex
 " Vim indent file
 "
 " Options: {{{

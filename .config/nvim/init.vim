@@ -262,10 +262,10 @@ call denite#custom#var('grep', 'final_opts', [])
 " }}}
 
 " LaTeX {{{
-nnoremap <leader>lc :!pdflatex %:h/main.tex<CR>
-nnoremap <leader>lC :!pdflatex %:p<CR>
-nnoremap <leader>lv :silent !open -a Skim %:h/main.pdf<CR>
-nnoremap <leader>lV :silent !open -a Skim %:r.pdf<CR>
+nnoremap <leader>lc :call jbuchermn#latex#compile(0)<CR>
+nnoremap <leader>lC :call jbuchermn#latex#compile(1)<CR>
+nnoremap <leader>lv :call jbuchermn#latex#view(0)<CR>
+nnoremap <leader>lV :call jbuchermn#latex#view(1)<CR>
 " }}}
 
 " Vim-Projectionist {{{
@@ -299,57 +299,14 @@ let g:neomake_warning_sign = {'text': '•', 'texthl': 'NeomakeWarningMsg'}
 hi CursorLineNR guifg=#ffffff
 
 " Focus by Wincent
-let g:WincentFocusBlacklist = ['diff', 'undotree', 'nerdtree', 'qf', 'nvimbols']
-function! WincentFocusEnabled()
-    return index(g:WincentFocusBlacklist, &filetype) == -1
-endfunction
-
-function! BlurWindow() abort
-    if WincentFocusEnabled()
-        if !exists('w:wincent_matches')
-            " Instead of unconditionally resetting, append to existing array.
-            " This allows us to gracefully handle duplicate autocmds.
-            let w:wincent_matches=[]
-        endif
-        let l:height=&lines
-        let l:slop=l:height / 2
-        let l:start=max([1, line('w0') - l:slop])
-        let l:end=min([line('$'), line('w$') + l:slop])
-        while l:start <= l:end
-            let l:next=l:start + 8
-            let l:id=matchaddpos(
-                        \   'SignColumn',
-                        \   range(l:start, min([l:end, l:next])),
-                        \   1000
-                        \ )
-            call add(w:wincent_matches, l:id)
-            let l:start=l:next
-        endwhile
-    endif
-endfunction
-
-function! FocusWindow() abort
-    if WincentFocusEnabled()
-        if exists('w:wincent_matches')
-            for l:match in w:wincent_matches
-                try
-                    call matchdelete(l:match)
-                catch /.*/
-                    " In testing, not getting any error here, but being ultra-cautious.
-                endtry
-            endfor
-            let w:wincent_matches=[]
-        endif
-    endif
-endfunction
 
 " if exists('+colorcolumn')
 "     autocmd BufEnter,FocusGained,VimEnter,WinEnter * if WincentFocusEnabled() | let &l:colorcolumn='+' . join(range(0, 254), ',+') | endif
 "     autocmd FocusLost,WinLeave * if WincentFocusEnabled() | let &l:colorcolumn=join(range(1, 255), ',') | endif
 " endif
 if exists('*matchaddpos')
-    autocmd BufEnter,FocusGained,VimEnter,WinEnter * call FocusWindow()
-    autocmd FocusLost,WinLeave * call BlurWindow()
+    autocmd BufEnter,FocusGained,VimEnter,WinEnter * call wincent#focus_window()
+    autocmd FocusLost,WinLeave * call wincent#blur_window()
 endif
 " }}}
 
