@@ -266,13 +266,6 @@ nnoremap <leader>lc :!pdflatex %:h/main.tex<CR>
 nnoremap <leader>lC :!pdflatex %:p<CR>
 nnoremap <leader>lv :silent !open -a Skim %:h/main.pdf<CR>
 nnoremap <leader>lV :silent !open -a Skim %:r.pdf<CR>
-
-" Looks great, but extremely unpractical
-let g:tex_conceal = ""
-
-if has('conceal')
-    set conceallevel=2 concealcursor=niv
-endif
 " }}}
 
 " Vim-Projectionist {{{
