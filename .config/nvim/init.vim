@@ -308,5 +308,10 @@ if exists('*matchaddpos')
     autocmd BufEnter,FocusGained,VimEnter,WinEnter * call wincent#focus_window()
     autocmd FocusLost,WinLeave * call wincent#blur_window()
 endif
+
+" Always display signcolumn
+autocmd BufRead,BufNewFile * setlocal signcolumn=yes
+autocmd FileType nerdtree,nvimbols setlocal signcolumn=no
+
 " }}}
 
