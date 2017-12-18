@@ -1,4 +1,6 @@
-let g:WincentFocusBlacklist = ['diff', 'undotree', 'nerdtree', 'qf', 'nvimbols']
+if(!exists('g:WincentFocusBlacklist'))
+    let g:WincentFocusBlacklist = ['diff', 'undotree', 'nerdtree', 'qf', 'nvimbols', 'denite']
+endif
 
 function! wincent#focus_enabled()
     return index(g:WincentFocusBlacklist, &filetype) == -1

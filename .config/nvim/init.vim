@@ -300,18 +300,18 @@ hi CursorLineNR guifg=#ffffff
 
 " Focus by Wincent
 
-" if exists('+colorcolumn')
-"     autocmd BufEnter,FocusGained,VimEnter,WinEnter * if WincentFocusEnabled() | let &l:colorcolumn='+' . join(range(0, 254), ',+') | endif
-"     autocmd FocusLost,WinLeave * if WincentFocusEnabled() | let &l:colorcolumn=join(range(1, 255), ',') | endif
-" endif
-if exists('*matchaddpos')
+augroup WincentFocus
+    autocmd!
     autocmd BufEnter,FocusGained,VimEnter,WinEnter * call wincent#focus_window()
     autocmd FocusLost,WinLeave * call wincent#blur_window()
-endif
+augroup end
 
 " Always display signcolumn
-autocmd BufRead,BufNewFile * setlocal signcolumn=yes
-autocmd FileType nerdtree,nvimbols setlocal signcolumn=no
+augroup SignColumn
+    autocmd!
+    autocmd BufRead,BufNewFile * setlocal signcolumn=yes
+    autocmd FileType nerdtree,nvimbols setlocal signcolumn=no
+augroup end
 
 " }}}
 
