@@ -133,7 +133,10 @@ vmap ö :
 nmap <silent> <ESC> :noh<CR>
 
 " Highlight without jumping
-nnoremap * *`` 
+nnoremap * *N 
+
+" Change word under cursor and repeat with dot operator (or n. to preview)
+nnoremap c* *Ncgn
 
 " Map arrow keys
 nmap <silent> <Up> :lprevious<CR>
@@ -324,5 +327,10 @@ augroup end
 set fillchars=vert:┃    " BOX DRAWINGS HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
 set fillchars+=fold:·   " MIDDLE DOT (U+00B7, UTF-8: C2 B7)
 set foldtext=wincent#foldtext()
+
+
+let s:arrow='↪ '
+let &showbreak = s:arrow 
+
 " }}}
 

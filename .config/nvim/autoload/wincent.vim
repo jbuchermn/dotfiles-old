@@ -49,8 +49,8 @@ let s:middot='·'
 let s:small_l='ℓ'
 
 function! wincent#foldtext() abort
-  let l:lines='[' . (v:foldend - v:foldstart + 1) . s:small_l . ']'
-  let l:first=substitute(getline(v:foldstart), '\v *', '', '')
-  let l:dashes=substitute(v:folddashes, '-', s:middot, 'g')
-  return s:middot . s:middot . s:middot . ' ' . l:lines . ' ' . l:first . ' '
+    let l:lines='[' . (v:foldend - v:foldstart + 1) . s:small_l . ']'
+    let l:first=substitute(getline(v:foldstart), '\v *', '', '')
+    let l:dashes=substitute(v:folddashes, '-', s:middot, 'g')
+    return s:middot . s:middot . s:middot . ' ' . l:lines . ' ' . l:first . ' '
 endfunction
