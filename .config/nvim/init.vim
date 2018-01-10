@@ -121,6 +121,9 @@ set undofile
 
 " Key Mappings - Needs to be cleaned up{{{
 
+nmap ö :
+vmap ö :
+
 " Clear highlights
 nmap <silent> <ESC> :noh<CR>
 
