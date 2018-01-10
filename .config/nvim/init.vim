@@ -78,6 +78,10 @@ set path=$PWD/**
 " Screens are bigger nowadays...
 set textwidth=200
 
+" Fold by syntax
+set foldmethod=syntax
+set foldlevelstart=20
+
 " Indentation
 set autoindent
 set smartindent
@@ -121,6 +125,7 @@ set undofile
 
 " Key Mappings - Needs to be cleaned up{{{
 
+" Easier to reach
 nmap ö :
 vmap ö :
 
@@ -302,7 +307,6 @@ let g:neomake_warning_sign = {'text': '•', 'texthl': 'NeomakeWarningMsg'}
 hi CursorLineNR guifg=#ffffff
 
 " Focus by Wincent
-
 augroup WincentFocus
     autocmd!
     autocmd BufEnter,FocusGained,VimEnter,WinEnter * call wincent#focus_window()
@@ -316,5 +320,9 @@ augroup SignColumn
     autocmd FileType nerdtree,nvimbols setlocal signcolumn=no
 augroup end
 
+" Folding by wincent
+set fillchars=vert:┃    " BOX DRAWINGS HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
+set fillchars+=fold:·   " MIDDLE DOT (U+00B7, UTF-8: C2 B7)
+set foldtext=wincent#foldtext()
 " }}}
 
