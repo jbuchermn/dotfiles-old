@@ -75,8 +75,8 @@ set number
 
 set path=$PWD/**
 
-" Screens are bigger nowadays...
-set textwidth=200
+" 80 is a bit too harsh..
+set textwidth=120
 
 " Fold by syntax
 set foldmethod=syntax
