@@ -323,6 +323,9 @@ augroup SignColumn
     autocmd FileType nerdtree,nvimbols setlocal signcolumn=no
 augroup end
 
+" Make textwidth visible
+let &colorcolumn=&textwidth+1
+
 " Folding by wincent
 set fillchars=vert:┃    " BOX DRAWINGS HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
 set fillchars+=fold:·   " MIDDLE DOT (U+00B7, UTF-8: C2 B7)
