@@ -189,6 +189,8 @@ map <silent> <leader>gg :Denite -no-quit grep<CR>
 
 " Fuzzy Finder
 nnoremap <silent> <leader>e :FuzzyOpen<CR>
+nnoremap <silent> <leader>v :vnew<CR>:FuzzyOpen<CR>
+nnoremap <silent> <leader>s :split<CR>:FuzzyOpen<CR>
 
 " NERDTree
 let NERDTreeShowHidden=1
