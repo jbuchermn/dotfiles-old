@@ -31,8 +31,8 @@ if dein#load_state('~/.dein')
     call dein#add('tpope/vim-eunuch')
     call dein#add('tpope/vim-projectionist')
     call dein#add('scrooloose/nerdtree') 
-    call dein#add('wincent/command-t') " Needs compilation of c extension, see :help command-t
     call dein#add('lambdalisue/lista.nvim')
+    call dein#add('cloudhead/neovim-fuzzy')
 
     " Util
     call dein#add('tomtom/tcomment_vim')
@@ -49,6 +49,9 @@ if dein#load_state('~/.dein')
 
     " CPP
     call dein#add('~/Daten/nvim/rtags-nvim')
+
+    " Python
+    call dein#add('Vimjas/vim-python-pep8-indent')
 
     " JavaScript
     call dein#add('pangloss/vim-javascript')
@@ -104,7 +107,9 @@ set wildmode=longest,full
 set splitbelow
 set splitright
 
-let mapleader = ',' " Comma is leader
+" Leader
+let mapleader = " "
+nnoremap <Space> <nop>
 
 " Remember cursor position between sessions
 autocmd BufReadPost *
@@ -182,10 +187,8 @@ let g:lista#custom_mappings = [
 map <silent> <leader>gi :Denite -no-quit grep:::!<CR>
 map <silent> <leader>gg :Denite -no-quit grep<CR>
 
-" Command-T
-nnoremap <silent> <leader>tt :CommandT<CR>
-nnoremap <silent> <leader>tj :CommandTJump<CR>
-nnoremap <silent> <leader>tb :CommandTBuffer<CR>
+" Fuzzy Finder
+nnoremap <silent> <leader>e :FuzzyOpen<CR>
 
 " NERDTree
 let NERDTreeShowHidden=1

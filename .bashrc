@@ -31,3 +31,11 @@ md () {
     mkdir -p "$@" && cd "$1"; 
 }
 
+fd () {
+    cd $(find ${1:-.} -type d | fzy)
+}
+
+ld () {
+    ls $(find ${1:-.} | fzy)
+}
+
