@@ -1,5 +1,4 @@
-About this setup
-================
+# About this setup
 
 Git repo for dotfiles in ~/.dotfiles instead of ~/.git
 
@@ -13,14 +12,14 @@ Summary to restore:
 4. dotfiles checkout (maybe backup some files first)
 
 
-Requirements
-============
+# Requirements
 
+    oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh
     oh-my-git: https://github.com/arialdomartini/oh-my-git
     z: https://github.com/rupa/z
 
-True color support in Emacs
-===========================
+
+# True color support in Emacs
 
 Version should be something like 26, 27, ... (25.3 did NOT work), start emacs with TERM=xterm-24bit emacs -nw
 

@@ -58,6 +58,9 @@ if dein#load_state('~/.dein')
     call dein#add('moll/vim-node')
     call dein#add('mxw/vim-jsx')
 
+    " CSV
+    call dein#add('chrisbra/csv.vim')
+
     if dein#check_install()
         call dein#install()
     endif

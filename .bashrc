@@ -16,26 +16,21 @@ source ~/.oh-my-git/prompt.sh
 export TMPDIR=/tmp
 
 #export CXX=g++-7
-
 export CXX=mpicxx
 export OMPI_CXX=g++-7
 
-PLOT(){
-    python ~/Daten/masters_thesis/tRecX/tRecX/SCRIPTS/plot.py "$@"
-}
-COMPARE(){
-    python ~/Daten/masters_thesis/tRecX/tRecX/SCRIPTS/compare.py "$@"
-}
-
-md () { 
+function md { 
     mkdir -p "$@" && cd "$1"; 
 }
 
-fd () {
+function fd {
     cd $(find ${1:-.} -type d | fzy)
 }
 
-ld () {
+function ld {
     ls $(find ${1:-.} | fzy)
 }
+
+# ViM mode
+set -o vi
 
