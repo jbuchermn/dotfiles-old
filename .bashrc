@@ -11,7 +11,6 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export PATH=${PATH}:/usr/local/opt/llvm/bin
 
 source ~/._z/z.sh
-source ~/.oh-my-git/prompt.sh
 
 export TMPDIR=/tmp
 

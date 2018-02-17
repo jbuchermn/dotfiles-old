@@ -2,7 +2,7 @@
 
 Git repo for dotfiles in ~/.dotfiles instead of ~/.git
 
-See https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+    See https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
 
 Summary to restore:
 
@@ -12,11 +12,13 @@ Summary to restore:
 4. dotfiles checkout (maybe backup some files first)
 
 
-# Requirements
+# Requirements/Submodules
 
-    oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh
-    oh-my-git: https://github.com/arialdomartini/oh-my-git
-    z: https://github.com/rupa/z
+    https://github.com/robbyrussell/oh-my-zsh
+    https://github.com/denysdovhan/spaceship-prompt
+    https://github.com/zsh-users/zsh-autosuggestions
+    https://github.com/syl20bnr/spacemacs
+    https://github.com/rupa/z
 
 
 # True color support in Emacs

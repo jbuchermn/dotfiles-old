@@ -193,7 +193,7 @@ map <silent> <leader>gg :Denite -no-quit grep<CR>
 " Fuzzy Finder
 nnoremap <silent> <leader>e :FuzzyOpen<CR>
 nnoremap <silent> <leader>v :vnew<CR>:FuzzyOpen<CR>
-nnoremap <silent> <leader>s :split<CR>:FuzzyOpen<CR>
+nnoremap <silent> <leader>s :new<CR>:FuzzyOpen<CR>
 
 " NERDTree
 let NERDTreeShowHidden=1
@@ -232,7 +232,7 @@ let g:jsx_ext_required = 0
 let g:nvimbols_enabled = 1
 " }}}
 
-"  Deoplete {{{
+" Deoplete {{{
 
 " General
 let g:deoplete#enable_at_startup = 1
@@ -273,7 +273,7 @@ call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'nor
 " Configure grep source
 call denite#custom#var('grep', 'matchers', ['matcher_regexp'])
 call denite#custom#var('grep', 'command', ['ag'])
-call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'default_opts', ['--vimgrep'])
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'separator', ['--'])

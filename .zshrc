@@ -1,13 +1,17 @@
-export ZSH=~/.oh-my-zsh
-ZSH_THEME="nicoulaj"
+source ~/.bashrc
 
 plugins=(
     git
 )
 
+# ViM mode
 bindkey -v
 bindkey "^?" backward-delete-char
-#export KEYTIMEOUT=1
 
+# oh-my-zsh
+export ZSH=~/.zsh/oh-my-zsh
+ZSH_THEME="spaceship"
 source $ZSH/oh-my-zsh.sh
-source ~/.bashrc
+
+# zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
