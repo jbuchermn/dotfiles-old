@@ -1,17 +1,4 @@
-source ~/.bashrc
+export SHELL_DIR=~/.shell
+export ZSH=$SHELL_DIR/oh-my-zsh
 
-plugins=(
-    git
-)
-
-# ViM mode
-bindkey -v
-bindkey "^?" backward-delete-char
-
-# oh-my-zsh
-export ZSH=~/.zsh/oh-my-zsh
-ZSH_THEME="spaceship"
-source $ZSH/oh-my-zsh.sh
-
-# zsh-autosuggestions
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $SH/base.zsh
