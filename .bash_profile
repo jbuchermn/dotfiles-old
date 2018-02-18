@@ -1,4 +1,3 @@
-# Basic configuration prior to any fancy stuff
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
