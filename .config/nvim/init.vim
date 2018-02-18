@@ -42,6 +42,7 @@ if dein#load_state('~/.dein')
     call dein#add('tpope/vim-fugitive')
     call dein#add('airblade/vim-gitgutter')
     call dein#add('Xuyuanp/nerdtree-git-plugin')
+    call dein#add('gregsexton/gitv')
 
     " Styling
     call dein#add('mhartington/oceanic-next')

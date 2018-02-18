@@ -1,5 +1,5 @@
 if(!exists('g:WincentFocusBlacklist'))
-    let g:WincentFocusBlacklist = ['diff', 'undotree', 'nerdtree', 'qf', 'nvimbols', 'denite']
+    let g:WincentFocusBlacklist = ['diff', 'undotree', 'nerdtree', 'qf', 'nvimbols', 'denite', 'git', 'gitv']
 endif
 
 function! wincent#focus_enabled()
