@@ -1,6 +1,9 @@
+export SHELL_DIR=~/.shell
+
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
 
-export PATH=${PATH}:/usr/local/sbin
+source ~/.shell/base.sh
+
 
