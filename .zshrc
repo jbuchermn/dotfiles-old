@@ -1,4 +1,6 @@
-export SHELL_DIR=~/.shell
-export ZSH=$SHELL_DIR/oh-my-zsh
+if [ -f ~/.bashrc ]; then
+   source ~/.bashrc
+fi
 
-source $SH/base.zsh
+export SHELL_DIR=~/.shell
+source $SHELL_DIR/zsh.zsh
