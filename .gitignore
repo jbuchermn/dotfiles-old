@@ -1,1 +1,15 @@
 .dotfiles
+
+# Ignore everything
+*
+**/*
+
+# except
+!.config/**/*
+!.shell/**/*
+!.gitignore
+!.spacemacs
+!.bash_profile
+!.zshrc
+!README.md
+
