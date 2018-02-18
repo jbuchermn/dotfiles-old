@@ -14,4 +14,4 @@ ZSH_THEME="spaceship"
 source $ZSH/oh-my-zsh.sh
 
 # zsh-autosuggestions
-source $SH/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $SHELL_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh

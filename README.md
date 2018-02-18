@@ -2,7 +2,7 @@
 
 Git repo for dotfiles in ~/.dotfiles instead of ~/.git
 
-    See https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+    https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
 
 Summary to restore:
 
@@ -19,6 +19,16 @@ Summary to restore:
     https://github.com/zsh-users/zsh-autosuggestions
     https://github.com/syl20bnr/spacemacs
     https://github.com/rupa/z
+
+# Enable shell configuration
+
+Zsh configuration enabled by default (.zshrc included). Configuration for
+Bash must be added to .bash_profile (on macOS) or .bashrc (on Linux):
+
+    ```bash
+    export SHELL_DIR=~/.shell
+    source $SHELL_DIR/bash.sh
+    ```
 
 
 # True color support in Emacs
