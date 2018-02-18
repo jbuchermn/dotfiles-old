@@ -25,10 +25,10 @@ Summary to restore:
 Zsh configuration enabled by default (.zshrc included). Configuration for
 Bash must be added to .bash_profile (on macOS) or .bashrc (on Linux):
 
-    ```bash
-    export SHELL_DIR=~/.shell
-    source $SHELL_DIR/bash.sh
-    ```
+```bash
+export SHELL_DIR=~/.shell
+source $SHELL_DIR/bash.sh
+```
 
 
 # True color support in Emacs
