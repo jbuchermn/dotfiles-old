@@ -1,75 +1,4 @@
 
-" Dein.vim {{{
-if &compatible
-    set nocompatible
-endif
-set runtimepath+=~/.dein/repos/github.com/Shougo/dein.vim
-
-if dein#load_state('~/.dein')
-    call dein#begin('~/.dein')
-
-    call dein#add('Shougo/dein.vim')
-
-    " Denite
-    call dein#add('Shougo/denite.nvim')
-
-    " TODO Does not work
-    call dein#add('mhartington/denite-neomake')
-
-    " Neomake
-    call dein#add('neomake/neomake')
-
-    " Deoplete
-    call dein#add('Shougo/deoplete.nvim')
-    call dein#add('carlitux/deoplete-ternjs')
-    call dein#add('zchee/deoplete-jedi')
-
-    " Symbols
-    " call dein#add('~/Daten/nvim/nvimbols')
-
-    " Navigation
-    call dein#add('tpope/vim-eunuch')
-    call dein#add('tpope/vim-projectionist')
-    call dein#add('scrooloose/nerdtree') 
-    call dein#add('lambdalisue/lista.nvim')
-    call dein#add('cloudhead/neovim-fuzzy')
-
-    " Util
-    call dein#add('tomtom/tcomment_vim')
-    call dein#add('jiangmiao/auto-pairs')
-
-    " Git
-    call dein#add('tpope/vim-fugitive')
-    call dein#add('airblade/vim-gitgutter')
-    call dein#add('Xuyuanp/nerdtree-git-plugin')
-    call dein#add('gregsexton/gitv')
-
-    " Styling
-    call dein#add('mhartington/oceanic-next')
-    call dein#add('bling/vim-airline') 
-
-    " CPP
-    " call dein#add('~/Daten/nvim/rtags-nvim')
-
-    " Python
-    call dein#add('Vimjas/vim-python-pep8-indent')
-
-    " JavaScript
-    call dein#add('pangloss/vim-javascript')
-    call dein#add('moll/vim-node')
-    call dein#add('mxw/vim-jsx')
-
-    " CSV
-    call dein#add('chrisbra/csv.vim')
-
-    if dein#check_install()
-        call dein#install()
-    endif
-
-    call dein#end()
-    call dein#save_state()
-endif
-" }}}
 
 " Global {{{
 language en_US.UTF-8 " Language is ENGLISH!
@@ -247,40 +176,6 @@ let g:deoplete#max_menu_width = 0
 let g:tern_request_timeout = 1
 " }}}
 
-" Neomake {{{
-let g:neomake_cpp_enabled_makers = ['rtags']
-let g:neomake_c_enabled_makers =  ['rtags']
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_python_enabled_makers = ['flake8']
-
-function! ConfigureNeomake()
-    if(&filetype == 'cpp' || &filetype == 'c')
-        call neomake#configure#automake('r', 750)
-    else
-        call neomake#configure#automake('rnw', 750)
-    endif
-endfunction
-
-augroup Neomake_Filetype
-    autocmd!
-    autocmd Filetype * :call ConfigureNeomake()
-augroup end
-" }}}
-
-" Denite {{{
-call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-
-" Configure grep source
-call denite#custom#var('grep', 'matchers', ['matcher_regexp'])
-call denite#custom#var('grep', 'command', ['ag'])
-call denite#custom#var('grep', 'default_opts', ['--vimgrep'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', [])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-" }}}
-
 " LaTeX {{{
 nnoremap <leader>lc :call jbuchermn#latex#compile(0)<CR>
 nnoremap <leader>lC :call jbuchermn#latex#compile(1)<CR>
@@ -303,12 +198,12 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-colorscheme OceanicNext
-let g:airline_theme='oceanicnext'
-let g:airline_powerline_fonts = 1
+" colorscheme OceanicNext
+" let g:airline_theme='oceanicnext'
+" let g:airline_powerline_fonts = 1
 
-let g:airline#extensions#neomake#error_symbol='✖ '
-let g:airline#extensions#neomake#warning_symbol='⚠️  '
+" let g:airline#extensions#neomake#error_symbol='✖ '
+" let g:airline#extensions#neomake#warning_symbol='⚠️  '
 
 " guibg matches OceanicNext
 hi NeomakeErrorMsg guifg=#ff0000 guibg=#343d46
