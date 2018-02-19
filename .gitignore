@@ -9,7 +9,6 @@
 !.shell/**/*
 !.gitignore
 !.spacemacs
-!.bash_profile
 !.zshrc
 !README.md
 

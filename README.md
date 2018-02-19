@@ -1,24 +1,26 @@
 # About this setup
 
-Git repo for dotfiles in ~/.dotfiles instead of ~/.git
-
-    https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+Git repo for dotfiles in [~/.dotfiles instead of ~/.git](https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/)
 
 Summary to restore:
 
-1. Set up alias
-2. Add .dotfiles to ~/.gitignore
-3. git clone --bare <REPO> ~/.dotfiles
-4. dotfiles checkout (maybe backup some files first)
+```bash
+cd
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+echo '.dotfiles' >> .gitignore
+git clone --bare https://github.com/jbuchermn/dotfiles $HOME/.dotfiles
+rm .gitignore
+dotfiles checkout
+```
 
 
 # Requirements/Submodules
 
-    https://github.com/robbyrussell/oh-my-zsh
-    https://github.com/denysdovhan/spaceship-prompt
-    https://github.com/zsh-users/zsh-autosuggestions
-    https://github.com/syl20bnr/spacemacs
-    https://github.com/rupa/z
+1. [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+2. [spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt)
+3. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+4. [z](https://github.com/rupa/z)
+5. [spacemacs](https://github.com/syl20bnr/spacemacs)
 
 # Enable shell configuration
 
