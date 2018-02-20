@@ -21,6 +21,7 @@ dotfiles checkout
 3. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 4. [z](https://github.com/rupa/z)
 5. [spacemacs](https://github.com/syl20bnr/spacemacs)
+6. [Powerline](https://github.com/powerline/fonts)
 
 # Enable shell configuration
 
