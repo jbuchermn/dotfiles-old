@@ -3,6 +3,7 @@ network=""
 connected=0
 
 if [ $(awk -v a="$pingtime" 'BEGIN{ print((a==a+0)); }') == "1" ]; then
+    connected=1
     pingtime=$(printf "%.0fms" $pingtime)
 
     wpa_status=$(wpa_cli status)
