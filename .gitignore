@@ -2,11 +2,20 @@
 
 # Ignore everything
 *
-**/*
 
 # except
-!.config/**/*
-!.shell/**/*
+!.config
+!.config/nvim/*
+.config/nvim/undodir
+!.config/nvim/*/*
+!.config/herbstluftwm
+!.config/herbstluftwm/*
+
+!.shell
+!.shell/*.sh
+!.shell/*.zsh
+!.shell/oceanic_next_suckless_terminal.h
+
 !.gitignore
 !.spacemacs
 !.zshrc

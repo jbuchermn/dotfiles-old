@@ -13,5 +13,5 @@ export TMPDIR=/tmp
 # Default compilers to use
 export CXX=mpicxx
 export CC=mpicc
-export OMPI_CXX=g++-7
+export OMPI_CXX=g++
 
