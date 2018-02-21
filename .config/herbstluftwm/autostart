@@ -30,10 +30,10 @@ hc keybind $Mod-d spawn dmenu_run
 
 # basic movement
 # focusing clients
-hc keybind $Mod-Left  focus left
-hc keybind $Mod-Down  focus down
-hc keybind $Mod-Up    focus up
-hc keybind $Mod-Right focus right
+hc keybind $Mod-Left  spawn ~/.config/herbstluftwm/move.rb -1 full
+hc keybind $Mod-Right spawn ~/.config/herbstluftwm/move.rb +1 full
+hc keybind $Mod-Down  spawn ~/.config/herbstluftwm/move.rb +1 empty
+hc keybind $Mod-Up    spawn ~/.config/herbstluftwm/move.rb -1 empty
 hc keybind $Mod-h     focus left
 hc keybind $Mod-j     focus down
 hc keybind $Mod-k     focus up
