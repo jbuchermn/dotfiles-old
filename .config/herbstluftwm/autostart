@@ -9,7 +9,7 @@ hc() {
 hc emit_hook reload
 
 # Background
-feh --bg-fill $HOME/Pictures/wallpaper.jpg
+feh --bg-fill $HOME/Pictures/wallpaper2.jpg
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -143,6 +143,9 @@ hc set frame_padding 0
 hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 1
 hc set mouse_recenter_gap 0
+
+# Start compton
+compton --config ~/.config/compton/default.conf &
 
 # rules
 hc unrule -F

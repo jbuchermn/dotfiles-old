@@ -10,13 +10,16 @@
 !.config/nvim/*/*
 !.config/herbstluftwm
 !.config/herbstluftwm/*
+!.config/compton
+!.config/compton/*
 
 !.shell
 !.shell/*.sh
 !.shell/*.zsh
 !.shell/oceanic_next_suckless_terminal.h
 
-scripts
+!scripts
+!scripts/*
 
 !.gitignore
 !.spacemacs
