@@ -121,16 +121,32 @@ hc pad $monitor $panel_height
         battery=$(expr $(expr $(cat /sys/class/power_supply/BAT*/charge_now) \* 100)\
             / $(cat /sys/class/power_supply/BAT*/charge_full))
 
+        supply=$(cat /sys/class/power_supply/AC/online)
+
         if [ "$battery" = "/" ]; then
-            battery="Plugged"
+            battery=""
         else
             battery="$battery%"
+        fi
+
+        if [ "$supply" = "1" ]; then
+            supply="AC"
+        else
+            supply=""
+        fi
+
+        if [ "$battery" = "" ] && [ "$supply" != "" ]; then
+            battery="$supply $separator"
+        elif [ "$battery" != "" ] && [ "$supply" = "" ]; then
+            battery="$battery $separator"
+        elif [ "$battery" != ""  ] && [ "$supply" != "" ]; then
+            battery="$battery - $supply $separator"
         fi
 
         # Current network status
         network=$(cat /tmp/network_status)
         
-        right="$separator^bg() $date $separator $battery $separator $network $separator"
+        right="$separator^bg() $date $separator $battery $network $separator"
 
         # small adjustments
         right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
