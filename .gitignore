@@ -16,6 +16,8 @@
 !.shell/*.zsh
 !.shell/oceanic_next_suckless_terminal.h
 
+scripts
+
 !.gitignore
 !.spacemacs
 !.zshrc

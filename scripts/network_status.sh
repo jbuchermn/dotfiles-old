@@ -16,8 +16,10 @@ if [ $(awk -v a="$pingtime" 'BEGIN{ print((a==a+0)); }') == "1" ]; then
 fi
 
 if [ "$connected" == "1" ]; then
+    echo "$network - $pingtime"
     echo "$network - $pingtime" > /tmp/network_status
 else
+    echo "Not connected"
     echo "Not connected" > /tmp/network_status
 fi
 
