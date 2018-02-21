@@ -32,11 +32,6 @@ function hex_to_escape (){
     printf "\033[48;2;%d;%d;%dm" $r $g $b
 }
 
-hex_to_escape $COLOR_SCHEME_00
-printf "    "
-printf "\033[0m"
-printf " Color 00"
-printf "\n"
 
 hex_to_escape $COLOR_SCHEME_01
 printf "    "
