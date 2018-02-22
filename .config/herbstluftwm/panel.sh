@@ -118,10 +118,17 @@ hc pad $monitor $panel_height
         echo -n "^bg()^fg() ${windowtitle//^/^^}"
         
         # Battery charge
-        battery=$(expr $(expr $(cat /sys/class/power_supply/BAT*/charge_now) \* 100)\
-            / $(cat /sys/class/power_supply/BAT*/charge_full))
-
         supply=$(cat /sys/class/power_supply/AC/online)
+        if [ "$supply" = "1" ]; then
+            supply="AC"
+            battery=$(expr $(expr $(cat /sys/class/power_supply/BAT*/charge_now) \* 100)\
+                / $(cat /sys/class/power_supply/BAT*/charge_full_design))
+        else
+            supply=""
+            battery=$(expr $(expr $(cat /sys/class/power_supply/BAT*/charge_now) \* 100)\
+                / $(cat /sys/class/power_supply/BAT*/charge_full))
+        fi
+
 
         if [ "$battery" = "/" ]; then
             battery=""
@@ -129,11 +136,6 @@ hc pad $monitor $panel_height
             battery="$battery%"
         fi
 
-        if [ "$supply" = "1" ]; then
-            supply="AC"
-        else
-            supply=""
-        fi
 
         if [ "$battery" = "" ] && [ "$supply" != "" ]; then
             battery="$supply $separator"
